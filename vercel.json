@@ -1,0 +1,5 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "cd ayush-plant-app && npm run build",
+  "outputDirectory": "ayush-plant-app/.next"
+}
