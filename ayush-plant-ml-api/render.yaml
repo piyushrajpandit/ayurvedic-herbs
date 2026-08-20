@@ -1,10 +1,13 @@
 services:
   - type: web
     name: ayush-plant-ml-api
-    env: docker
+    env: python
+    region: singapore
     plan: free
-    dockerfilePath: Dockerfile
-    autoDeploy: true
+    buildCommand: "pip install --upgrade pip && pip install -r requirements.txt"
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT"
     envVars:
-      - key: PORT
-        value: 8000
+      - key: PYTHON_VERSION
+        value: 3.9.0
+      - key: HF_MODEL_NAME
+        value: iamudit02/ayurvedic-herbs-vit
