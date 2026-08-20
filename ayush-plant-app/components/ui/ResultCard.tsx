@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { AlertTriangle, CheckCircle, MapPin, Sparkles, RefreshCw, ShieldAlert, Eye, Cpu, QrCode, Flag, Send, Check, Sliders, ArrowLeftRight, Download, Award } from "lucide-react";
+import { AlertTriangle, CheckCircle, MapPin, Sparkles, RefreshCw, ShieldAlert, Eye, Cpu, QrCode, Flag, Send, Check, Sliders, ArrowLeftRight, Download, Award, Volume2 } from "lucide-react";
 import CertificateModal from "./CertificateModal";
 
 interface Adulterant {
@@ -123,9 +123,25 @@ export default function ResultCard({
                 ({plantDetails.scientificName})
               </span>
             </h3>
-            <p className="text-amber-400 font-mono text-sm">
-              Ayurvedic / Sanskrit Name: <span className="font-semibold text-amber-300">{plantDetails.ayurvedicName}</span>
-            </p>
+            <div className="flex items-center gap-2 mt-1">
+              <p className="text-amber-400 font-mono text-sm">
+                Ayurvedic / Sanskrit Name: <span className="font-semibold text-amber-300">{plantDetails.ayurvedicName}</span>
+              </p>
+              <button
+                type="button"
+                onClick={() => {
+                  if (typeof window !== "undefined" && "speechSynthesis" in window) {
+                    const utterance = new SpeechSynthesisUtterance(`${plantDetails.ayurvedicName}, ${plantDetails.commonName}`);
+                    utterance.rate = 0.85;
+                    window.speechSynthesis.speak(utterance);
+                  }
+                }}
+                className="p-1 rounded-full bg-amber-500/20 text-amber-300 hover:bg-amber-500/40 transition-colors"
+                title="Listen to Sanskrit/Ayurvedic Pronunciation"
+              >
+                <Volume2 className="w-3.5 h-3.5" />
+              </button>
+            </div>
           </div>
 
           <div className="flex flex-col items-center md:items-end justify-center">

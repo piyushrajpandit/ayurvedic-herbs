@@ -217,6 +217,7 @@ export default function UploadSection({ currentLang = "en" }: UploadSectionProps
                   ref={fileInputRef}
                   type="file"
                   accept="image/*"
+                  capture="environment"
                   onChange={(e) => e.target.files?.[0] && handleFileSelect(e.target.files[0])}
                   className="hidden"
                 />
