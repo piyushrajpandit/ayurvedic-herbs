@@ -18,6 +18,7 @@ import {
   Leaf,
   Info,
 } from "lucide-react";
+import { Language } from "@/lib/i18n";
 
 interface PlantGeoDistribution {
   id: string;
@@ -210,7 +211,11 @@ const TOP_10_MEDICINAL_PLANTS: PlantGeoDistribution[] = [
   },
 ];
 
-export default function GeoMapSection() {
+interface GeoMapSectionProps {
+  currentLang?: Language;
+}
+
+export default function GeoMapSection({ currentLang = "en" }: GeoMapSectionProps) {
   const [selectedPlant, setSelectedPlant] = useState<PlantGeoDistribution>(TOP_10_MEDICINAL_PLANTS[0]);
 
   const googleMapsUrl = `https://maps.google.com/maps?q=${selectedPlant.lat},${selectedPlant.lng}&z=10&output=embed`;

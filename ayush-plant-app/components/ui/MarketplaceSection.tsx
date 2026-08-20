@@ -17,6 +17,7 @@ import {
   FileCheck,
   Image as ImageIcon,
 } from "lucide-react";
+import { Language } from "@/lib/i18n";
 
 interface Listing {
   id: string;
@@ -120,7 +121,11 @@ const INITIAL_LISTINGS: Listing[] = [
   },
 ];
 
-export default function MarketplaceSection() {
+interface MarketplaceSectionProps {
+  currentLang?: Language;
+}
+
+export default function MarketplaceSection({ currentLang = "en" }: MarketplaceSectionProps) {
   const [listings, setListings] = useState<Listing[]>(INITIAL_LISTINGS);
   const [showSellModal, setShowSellModal] = useState(false);
   const [sellForm, setSellForm] = useState({

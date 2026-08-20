@@ -2,8 +2,13 @@
 
 import React from "react";
 import { Leaf, Heart } from "lucide-react";
+import { Language } from "@/lib/i18n";
 
-export default function Footer() {
+interface FooterProps {
+  currentLang?: Language;
+}
+
+export default function Footer({ currentLang = "en" }: FooterProps) {
   return (
     <footer id="about" className="relative z-10 py-12 border-t border-emerald-500/20 bg-botanical-950">
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
